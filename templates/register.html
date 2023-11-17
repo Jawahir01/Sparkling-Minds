@@ -1,0 +1,57 @@
+{% extends "base.html" %} 
+
+{% block content %}
+
+<div class="row">
+    <div class="col">
+        <h2>Sign Up</h2>
+        <p class="col"> Fill out all information</p>
+        <p class="col"> have an account? log in.</p>
+    </div>
+</div>
+<form class="row form-control justify-content-center">
+    <div class="row">
+        <div class="col-md-4">
+            <label for="fname" class="form-label">first Name</label>
+            <input type="text" class="form-control" placeholder="First name" aria-label="First name" />
+        </div>
+        <div class="col-md-4">
+            <label for="lname" class="form-label">Last name</label>
+            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" />
+        </div>
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <label for="inputPassword4" class="form-label">Password</label>
+                <input type="password" class="form-control" id="inputPassword4" />
+            </div>
+            <div class="col-auto">
+                <span id="passwordHelpInline" class="form-text">
+                    Must be 8-20 characters long.
+                </span>
+            </div>
+            <div class="col-auto">
+                <label for="inputPassword4" class="form-label">Password (again)</label>
+                <input type="password" class="form-control" id="inputPassword4" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="inputAddress" class="form-label">phone number</label>
+            <input type="number" class="form-control" id="inputAddress" placeholder="phone number" />
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck" />
+            <label class="form-check-label" for="gridCheck"> Check me out </label>
+        </div>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+</form>
+
+{% endblock%}

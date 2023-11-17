@@ -25,22 +25,18 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-2 col-md-3 col-sm-4">
+                    <div class="col-1">
                         <a class="navbar-brand" href="#">
-                            <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24"
-                                class="d-inline-block align-text-top">
-                            <h4>Sparkling Minds Club</h4>
+                            <h5>Sparkling Minds Club</h5>
                         </a>
                     </div>
     
-                    <div class="col-lg-10 col-md-9 col-sm-8 ">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                            aria-label="Toggle navigation">
+                    <div class="col-11 ">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse justify-content-center nav-pills nav-fill"
-                            id="navbarNavAltMarkup">
+                        <div class="collapse navbar-collapse justify-content-end nav-pills nav-fill" id="navbarNavAltMarkup">
                             <ul class="nav ">
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Home</a>
@@ -60,32 +56,22 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Contact</a>
                                 </li>
-                                <li class="atf__header-options atf__header-options-2">
-                                    <!-- header-search-1 -->
-                                    <div class="header-search-area d-none d-xl-block">
-                                        <div class="header-search search-open">
-                                            <div class="search-icon">
-                                                <i class="fa-solid fa-magnifying-glass for-search-show"></i>
-                                                <i class="fa-solid fa-circle-xmark for-search-close"></i>
-                                            </div>
-                                        </div>
-                                        <div class="header-search-form search-open">
-                                            <form id="#" method="get" action="#">
-                                                <input type="text" name="search" value="" placeholder="Search here..."
-                                                    fdprocessedid="2tc4p">
-                                                <button type="submit" fdprocessedid="dp0g8u">
-                                                    <span><i class="fa-search"></i>
-                                                    </span>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Log In</a>
                                 </li>
                             </ul>
+                            <div class="col-3">
+                                <form class="d-flex" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Search here..." aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">
+                                        <i class="fa-solid fa-magnifying-glass for-search-show"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+           </div>
         </nav>
     </header>
     {% block content %}

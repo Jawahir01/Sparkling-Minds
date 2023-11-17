@@ -1,14 +1,8 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <h2>List of Courses:</h2>
-    {% for course in courses %} 
-    
-        {{ course.course_name }}<br>
-        {{ course.course_time }}<br>
-        {{ course.course_start }}<br>
-        {{ course.course_description }}<br>
-        <br>
-    {% endfor %}
-
-{% endblock %}
-  
+{% for course in courses %} {{ course.course_name }}<br />
+{{ course.course_time }}<br />
+{{ course.course_start }}<br />
+{{ course.course_description }}<br />
+<br />
+{% endfor %} {% endblock %}
