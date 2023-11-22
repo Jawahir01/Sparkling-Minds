@@ -39,13 +39,13 @@
                         <div class="collapse navbar-collapse justify-content-end nav-pills nav-fill" id="navbarNavAltMarkup">
                             <ul class="nav ">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Home</a>
+                                    <a class="nav-link" href="{{ url_for('get_courses') }}">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Courses</a>
+                                    <a class="nav-link" href="{{ url_for('get_courses') }}">Courses</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Activites</a>
@@ -57,7 +57,7 @@
                                     <a class="nav-link" href="#">Contact</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Log In</a>
+                                    <a class="nav-link" href="{{ url_for('register') }}">Register</a>
                                 </li>
                             </ul>
                             <div class="col-3">
@@ -74,9 +74,22 @@
            </div>
         </nav>
     </header>
-    {% block content %}
-
-    {% endblock %}
+    <section>
+        <!-- flash messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row flashes">
+                        <h4 class="light-blue lighten-4 center-align">{{ message }}</h4>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        </section>
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
