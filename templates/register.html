@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col">
             <h2>Sign Up</h2>
-            <p class="col"> Fill out all information</p>
-            <p class="col"> have an account? log in.</p>
+            <p class="col"> Fill out all your information</p>
+            <p class="col"> have an account? <a href="{{ url_for('signin')}}">log in.</a></p>
         </div>
     </div>
     <form class="row form-control justify-content-center" method="POST" action="{{ url_for('register') }}">
@@ -34,20 +34,15 @@
                 <input id="email" name="email" type="email" class="form-control" required />
             </div>
             <div class="row align-items-center">
-                <div class="col-auto">
+                <div class="col-md-4">
                     <label for="password" class="form-label">Password</label>
                     <input id="password" name="password" type="password" class="form-control validate" minlength="8"
                         maxlength="20" pattern="^[a-zA-Z0-9]{8,20}$" required />
                 </div>
                 <div class="col-auto">
-                    <span id="passwordHelpInline" class="form-text">
-                        Must be 8-20 characters long.
+                    <span id="">
+form-text                        Must be 8-20 characters long.
                     </span>
-                </div>
-                <div class="col-auto">
-                    <label for="retype-password" class="form-label">Password (again)</label>
-                    <input id="retype-password" name="retype-password" type="password" class="form-control validate"
-                        minlength="8" maxlength="20" pattern="^[a-zA-Z0-9]{8,20}$" required />
                 </div>
             </div>
             <div class="col-md-4">
@@ -61,7 +56,7 @@
             </div>
         </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary">Register</button>
         </div>
     </form>
 
