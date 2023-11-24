@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col">
+            <h2>Sign In</h2>
+        </div>
+    </div>
+    <form class="row form-control justify-content-end" method="POST" action="{{ url_for('signin') }}">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="username" class="form-label">User Name</label>
+                <input id="username" name="username" type="text" class="form-control validate"
+                    placeholder="Choose a user name" aria-label="username" minlength="4" maxlength="15"
+                    pattern="^[a-zA-Z0-9]{4,15}$" required />
+            </div>
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <label for="password" class="form-label">Password</label>
+                    <input id="password" name="password" type="password" class="form-control validate" minlength="8"
+                        maxlength="20" pattern="^[a-zA-Z0-9]{8,20}$" required />
+                </div>
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                        <label class="form-check-label" for="dropdownCheck">
+                            Remember me
+                        </label>
+                    </div>
+                </div>
+            </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </div>
+        </div>
+    </form>
+        <div class="dropdown-divider"></div>
+            <p class="">New around here? <a href="{{ url_for('register')}}">Sign in</a></p>
+            <p class=""> <a href="#">Forgot password?</a></p>
+{% endblock%}
