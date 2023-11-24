@@ -41,7 +41,6 @@ def register():
             "first-name": request.form.get("first-name").lower(),
             "last-name": request.form.get("first-name").lower(),
             "password": generate_password_hash(request.form.get("password")),
-            "retype-password": "password",
             "phone-number": request.form.get("phone-number")
         }
         mongo.db.users.insert_one(register)
@@ -50,6 +49,7 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("You have been Successful! Registered")
         return redirect(url_for("profile", username=session["user"]))
+    
     return render_template("register.html")
 
 
@@ -63,20 +63,18 @@ def signin():
             # ensure hashed password matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
-                session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(
-                    request.form.get("username")))
-                return redirect(url_for(
-                    "profile", username=session["user"]))
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome, {}".format(request.form.get("username")))
+                    return redirect(url_for("profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
-                return redirect(url_for("login"))
+                return redirect(url_for("signin"))
 
         else:
             # username doesn't exist
             flash("Incorrect Username and/or Password")
-            return redirect(url_for("login"))
+            return redirect(url_for("signin"))
 
     return render_template("signin.html")
 
@@ -86,8 +84,19 @@ def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
     return render_template("profile.html", username=username)
 
+
+@app.route("/signout")
+def signout():
+    # remove user from session cookie
+    flash("You have been signed out")
+    session.pop("user")
+    return redirect(url_for("signin"))
 
 
 if __name__ == "__main__":
