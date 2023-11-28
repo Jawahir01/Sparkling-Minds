@@ -88,6 +88,19 @@ def profile(username):
     if session["user"]:
         return render_template("profile.html", username=username)
 
+    if request.method == "POST":
+        child = {
+            "username": session["user"],
+            "childfname": request.form.get("childfname").lower(),
+            "childlname": request.form.get("childlname").lower(),
+            "date_of_birth": int(request.form.get("date_of_birth")),
+            "school_name": request.form.get("school_name").lower(),
+            "school_year": request.form.get("school_year").lower(),
+            "child_med_conditions": request.form.get("child_med_conditions")
+        }
+    mongo.db.kids.insert_one(child)
+    flash("Your Child was added successfully!")
+
     return render_template("profile.html", username=username)
 
 

@@ -25,24 +25,29 @@
         <div class="collapse" id="collapseExample">
              <form class="card card-body" method="POST" action="">
                 <div class="row">
-                    <label for="exampleInputEmail1" class="form-label">Child Name: </label>
+                    <label for="child_name" class="form-label">Child Name: </label>
                     <div class="col-3">
-                        <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                        <input type="text" id="childfname" name="childfname" class="form-control" 
+                            placeholder="First name" aria-label="First name">
                     </div>
                     <div class="col-3">
-                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                        <input type="text" id="childlname" name="childlname"  class="form-control" 
+                            placeholder="Last name" aria-label="Last name">
                     </div>
-                    <label for="exampleInputEmail1" class="form-label">Date of Birth: </label>
+                    <label for="date_of_birth" class="form-label">Date of Birth: </label>
                     <div class="col-auto">
-                        <input type="date" class="form-control" placeholder="DD/MM/YYYY" aria-label="date-of-birth">
+                        <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" 
+                            placeholder="DD/MM/YYYY" aria-label="date-of-birth">
                     </div>
-                    <label for="exampleInputEmail1" class="form-label">School Name: </label>
+                    <label for="school_name" class="form-label">School Name: </label>
                     <div class="col-6">
-                        <input type="text" class="form-control" placeholder="School Name" aria-label="School Name">
+                        <input type="text" id="school_name" name="school_name" class="form-control" 
+                            placeholder="School Name" aria-label="School Name">
                     </div>
-                    <label for="exampleInputEmail1" class="form-label">School Year: </label>
+                    <label for="school_year" class="form-label">School Year: </label>
                     <div class="col-4">
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" id="school_year" name="school_year" 
+                            aria-label="Default select example">
                             <option selected>Choose your Child's Academic Year</option>
                             <option value="1">Year 1</option>
                             <option value="2">Year 2</option>
@@ -55,14 +60,16 @@
                             <option value="9">Year 9</option>
                         </select>
                     </div>
-                    <label for="floatingTextarea" class="form-label">Does your child suffer
+                    <label for="child_med_conditions" class="form-label">Does your child suffer
                         from any medical conditions/allergies that the club should be aware of?
                     </label>
                     <div class="col">
-                        <textarea class="form-control" placeholder="Leave a comment here" aria-label="With textarea" id="floatingTextarea"></textarea>
+                        <textarea  id="child_med_conditions" name="child_med_conditions" class="form-control" 
+                            placeholder="Leave a comment here" aria-label="With textarea">
+                        </textarea>
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-outline-success">submit</button>
+                        <button type="submit" class="btn btn-outline-success">submit</button>
                     </div>
                 </div>
             </form>
