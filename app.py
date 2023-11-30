@@ -61,11 +61,10 @@ def signin():
             {"username": request.form.get("username").lower()})
         if existing_user:
             # ensure hashed password matches user input
-            if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(request.form.get("username")))
-                    return redirect(url_for("profile", username=session["user"]))
+            if check_password_hash(existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for("profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -88,20 +87,27 @@ def profile(username):
     if session["user"]:
         return render_template("profile.html", username=username)
 
+
+@app.route("/add_child", methods=["GET", "POST"])
+def add_child():
+    # insert a child to DB based on user's session
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
     if request.method == "POST":
         child = {
             "username": session["user"],
             "childfname": request.form.get("childfname").lower(),
             "childlname": request.form.get("childlname").lower(),
-            "date_of_birth": int(request.form.get("date_of_birth")),
+            "date_of_birth": request.form.get("date_of_birth"),
             "school_name": request.form.get("school_name").lower(),
             "school_year": request.form.get("school_year").lower(),
             "child_med_conditions": request.form.get("child_med_conditions")
         }
-    mongo.db.kids.insert_one(child)
-    flash("Your Child was added successfully!")
+        mongo.db.kids.insert_one(child)
+        flash("Your Child was added successfully!")
 
-    return render_template("profile.html", username=username)
+    return render_template("profile.html")
 
 
 @app.route("/signout")
