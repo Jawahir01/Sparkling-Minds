@@ -61,7 +61,8 @@ def signin():
             {"username": request.form.get("username").lower()})
         if existing_user:
             # ensure hashed password matches user input
-            if check_password_hash(existing_user["password"], request.form.get("password")):
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
@@ -97,17 +98,18 @@ def add_child():
     if request.method == "POST":
         child = {
             "username": session["user"],
-            "childfname": request.form.get("childfname").lower(),
-            "childlname": request.form.get("childlname").lower(),
+            "childfname": request.form.get("childfname"),
+            "childlname": request.form.get("childlname"),
             "date_of_birth": request.form.get("date_of_birth"),
-            "school_name": request.form.get("school_name").lower(),
-            "school_year": request.form.get("school_year").lower(),
+            "school_name": request.form.get("school_name"),
+            "school_year": request.form.get("school_year"),
             "child_med_conditions": request.form.get("child_med_conditions")
         }
         mongo.db.kids.insert_one(child)
-        flash("Your Child was added successfully!")
+        flash("Your Child hass been added successfully!")
 
-    return render_template("profile.html")
+    children = mongo.db.kids.find().sort("username")
+    return render_template("profile.html", children=children)
 
 
 @app.route("/signout")
