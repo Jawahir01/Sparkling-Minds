@@ -1,0 +1,35 @@
+{% extends "base.html" %} 
+{% block content %}
+    <h2>Our Sports: </h2>
+    <div class="container">
+        <div class="row">
+            {% for sport in sports %}
+                <div class="col">
+                    <div class="card border-primary mb-4" style="max-width: 20rem;">
+                        <img src="{{ url_for('static', filename='img/test2.jpg') }}" class="card-img-top" alt="test picture">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ sport.sport_name }}</h5>
+                            <p>{{ sport.sport_description }}</p>
+                            <p class="card-text">Some quick example text to build on the card title and 
+                                make up the bulk of the card's content.</p>
+                                        
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <strong> Sat - Sun: </strong>{{ sport.sport_time }}</li>
+                                <li class="list-group-item">
+                                    <strong>Course Date: </strong>{{ sport.sport_start }}</li>
+                                <li class="list-group-item">
+                                    <strong>Coach: </strong>{{ sport.Coach }}
+                                </li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="btn btn-primary card-link">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

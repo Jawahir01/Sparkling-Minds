@@ -25,6 +25,12 @@ def get_courses():
     return render_template("courses.html", courses=courses)
 
 
+@app.route("/get_sports")
+def get_sports():
+    sports = list(mongo.db.sports.find())
+    return render_template("sports.html", sports=sports)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
