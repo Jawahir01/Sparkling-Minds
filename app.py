@@ -98,7 +98,7 @@ def profile(username):
 
     if session["user"]:
         children = list(mongo.db.kids.find({'username': username}))
-        return render_template("profile.html", username=username, children=children)
+        return render_template("profile.html", username=username, children= children)
 
 
 @app.route("/add_child", methods=["GET", "POST"])
