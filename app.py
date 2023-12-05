@@ -31,6 +31,7 @@ def get_sports():
     return render_template("sports.html", sports=sports)
 
 
+# User registration route
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -59,13 +60,17 @@ def register():
     return render_template("register.html")
 
 
+# User signin route
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
     if request.method == "POST":
         # check if username exists in db
+
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
+
         if existing_user:
+
             # ensure hashed password matches user input
             if check_password_hash(
             existing_user["password"], request.form.get("password")):
@@ -92,7 +97,8 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        children = list(mongo.db.kids.find({'username': username}))
+        return render_template("profile.html", username=username, children=children)
 
 
 @app.route("/add_child", methods=["GET", "POST"])
@@ -101,6 +107,7 @@ def add_child():
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
+    # Add new child to the user's list
     if request.method == "POST":
         child = {
             "username": session["user"],
@@ -114,7 +121,7 @@ def add_child():
         mongo.db.kids.insert_one(child)
         flash("Your Child hass been added successfully!")
 
-    children = mongo.db.kids.find().sort("username")
+    children = list(mongo.db.kids.find({'username': username}))
     return render_template("profile.html", children=children)
 
 

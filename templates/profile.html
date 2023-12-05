@@ -11,7 +11,17 @@
         </div>
     </div>
 
- 
+<div class="row">
+    <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample">
+            Add Child<i class="fa fa-plus"></i></button>
+
+    </div>
+</div>
+<br>
+
 <!-- Child Details -->
     {% for child in children %}
         <div class="card" style="width: 18rem;">
@@ -27,18 +37,6 @@
             </ul>
         </div>
     {% endfor %}
-
-
-   <div class="row">
-        <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
-             
-                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                Add Child<i class="fa fa-plus"></i></button>
-            
-        </div>
-    </div>
-    <br>
-     
 
     <!-- Child Form -->
     <div class="row">
