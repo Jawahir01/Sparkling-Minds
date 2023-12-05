@@ -45,7 +45,7 @@ def register():
         register = {
             "username": request.form.get("username").lower(),
             "first-name": request.form.get("first-name").lower(),
-            "last-name": request.form.get("first-name").lower(),
+            "last-name": request.form.get("last-name").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "phone-number": request.form.get("phone-number")
         }
@@ -55,7 +55,7 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("You have been Successful! Registered")
         return redirect(url_for("profile", username=session["user"]))
-    
+   
     return render_template("register.html")
 
 
@@ -68,7 +68,7 @@ def signin():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+            existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
