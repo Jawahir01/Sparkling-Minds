@@ -27,17 +27,17 @@
     <div class="col">
         <div class="collapse" id="collapseExample">
             <form class="card card-body" method="POST" action="{{ url_for('add_child')}}">
-                <div class="row">
-                    <div class="row">
-                        <div class="col-4">
-                            <label for="child_name" class="form-label">Child Name: </label>
-                            <input type="text" id="childfname" name="childfname" class="form-control validate"
-                                placeholder="First name" aria-label="First name" minlength="3" 
-                                maxlength="15" pattern="^[A-Za-z]{1,15}$" required>
-                            <input type="text" id="childlname" name="childlname" class="form-control validate"
-                                placeholder="Last name" aria-label="Last name" minlength="3" 
-                                maxlength="15" pattern="^[A-Za-z]{1,15}$" required>
-                        </div>
+                <div class="row g-3">
+                    <label for="child_name" class="form-label">Child Name: </label>
+                    <div class="col-3">
+                        <input type="text" id="childfname" name="childfname" class="form-control validate"
+                            placeholder="First name" aria-label="First name" minlength="3" 
+                            maxlength="15" pattern="^[A-Za-z]{1,15}$" required>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" id="childlname" name="childlname" class="form-control validate"
+                            placeholder="Last name" aria-label="Last name" minlength="3" 
+                            maxlength="15" pattern="^[A-Za-z]{1,15}$" required>
                     </div>
                     <label for="date_of_birth" class="form-label">Date of Birth: </label>
                     <div class="col-auto">
@@ -107,8 +107,83 @@
                     </div>
                 </div>
             </div>
+            <!-- Edit Button /trigger modal/ -->
+            <div class="row ">
+                <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="" class="btn btn-primary lighten-1 " role="button" data-bs-toggle="modal" 
+                        data-bs-target="#staticBackdrop"> Edit Child</a>
+   
+                                 </div>
+            </div>
         </div>
-        <br>
+            <br>
+
+            <!-- Edit Form Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Child Details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="" action="">
+                                <div class="row g-3">
+                                    <label for="child_name" class="form-label">Child Name: </label>
+                                    <div class="col-3">
+                                        <input type="text" id="childfname" name="childfname" class="form-control validate"
+                                            placeholder="First name" aria-label="First name" minlength="3" 
+                                            maxlength="15" pattern="^[A-Za-z]{1,15}$" required>
+                                    </div>
+                                    <div class="col-3">
+                                        <input type="text" id="childlname" name="childlname" class="form-control validate"
+                                            placeholder="Last name" aria-label="Last name" minlength="3" 
+                                            maxlength="15" pattern="^[A-Za-z]{1,15}$" required>
+                                    </div>
+                                    <label for="date_of_birth" class="form-label">Date of Birth: </label>
+                                    <div class="col-auto">
+                                        <input type="date" id="date_of_birth" name="date_of_birth" class="form-control"
+                                            placeholder="DD/MM/YYYY" aria-label="date-of-birth" class="validate" required>
+                                    </div>
+                                    <label for="school_name" class="form-label">School Name: </label>
+                                    <div class="col-6">
+                                        <input type="text" id="school_name" name="school_name" class="form-control"
+                                            placeholder="School Name" aria-label="School Name" class="validate" required>
+                                    </div>
+                                    <label for="school_year" class="form-label">School Year: </label>
+                                    <div class="col-4">
+                                        <select class="form-select" id="school_year" name="school_year"
+                                            aria-label="Default select example" class="validate" required>
+                                            <option selected>Choose your Child's Academic Year</option>
+                                            <option value="1">Year 1</option>
+                                            <option value="2">Year 2</option>
+                                            <option value="3">Year 3</option>
+                                            <option value="4">Year 4</option>
+                                            <option value="5">Year 5</option>
+                                            <option value="6">Year 6</option>
+                                            <option value="7">Year 7</option>
+                                            <option value="8">Year 8</option>
+                                            <option value="9">Year 9</option>
+                                        </select>
+                                    </div>
+                                    <label for="child_med_conditions" class="form-label" >
+                                        Does your child suffer from any medical conditions/allergies that the club 
+                                        should be aware of? </label>
+                                    <div class="col">
+                                        <textarea id="child_med_conditions" name="child_med_conditions" 
+                                        class="form-control" placeholder="Please explain here" aria-label="With textarea" 
+                                        class="validate" required> </textarea>
+                                    </div>
+                                </div>
+                        </form>
+                    </div><div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     {% endfor %}
 
     
