@@ -15,9 +15,9 @@
     <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
 
         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" 
-        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Add Child<i class="fa fa-plus"></i></button>
-
+        data-bs-target="#collapseExample" aria-expanded="false"
+         aria-controls="collapseExample"> Add Child<i class="fa fa-plus"></i>
+        </button>
     </div>
 </div>
 <br>
@@ -28,29 +28,31 @@
         <div class="collapse" id="collapseExample">
             <form class="card card-body" method="POST" action="{{ url_for('add_child')}}">
                 <div class="row">
-                    <label for="child_name" class="form-label">Child Name: </label>
-                    <div class="col-3">
-                        <input type="text" id="childfname" name="childfname" class="form-control"
-                            placeholder="First name" aria-label="First name">
-                    </div>
-                    <div class="col-3">
-                        <input type="text" id="childlname" name="childlname" class="form-control"
-                            placeholder="Last name" aria-label="Last name">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="child_name" class="form-label">Child Name: </label>
+                            <input type="text" id="childfname" name="childfname" class="form-control validate"
+                                placeholder="First name" aria-label="First name" minlength="3" 
+                                maxlength="15" pattern="^[A-Za-z]{1,15}$" required>
+                            <input type="text" id="childlname" name="childlname" class="form-control validate"
+                                placeholder="Last name" aria-label="Last name" minlength="3" 
+                                maxlength="15" pattern="^[A-Za-z]{1,15}$" required>
+                        </div>
                     </div>
                     <label for="date_of_birth" class="form-label">Date of Birth: </label>
                     <div class="col-auto">
                         <input type="date" id="date_of_birth" name="date_of_birth" class="form-control"
-                            placeholder="DD/MM/YYYY" aria-label="date-of-birth">
+                            placeholder="DD/MM/YYYY" aria-label="date-of-birth" class="validate" required>
                     </div>
                     <label for="school_name" class="form-label">School Name: </label>
                     <div class="col-6">
                         <input type="text" id="school_name" name="school_name" class="form-control"
-                            placeholder="School Name" aria-label="School Name">
+                            placeholder="School Name" aria-label="School Name" class="validate" required>
                     </div>
                     <label for="school_year" class="form-label">School Year: </label>
                     <div class="col-4">
                         <select class="form-select" id="school_year" name="school_year"
-                            aria-label="Default select example">
+                            aria-label="Default select example" class="validate" required>
                             <option selected>Choose your Child's Academic Year</option>
                             <option value="1">Year 1</option>
                             <option value="2">Year 2</option>
@@ -63,13 +65,13 @@
                             <option value="9">Year 9</option>
                         </select>
                     </div>
-                    <label for="child_med_conditions" class="form-label">Does your child suffer
-                        from any medical conditions/allergies that the club should be aware of?
-                    </label>
+                    <label for="child_med_conditions" class="form-label" >
+                        Does your child suffer from any medical conditions/allergies that the club 
+                        should be aware of? </label>
                     <div class="col">
                         <textarea id="child_med_conditions" name="child_med_conditions" 
-                        class="form-control" placeholder="Leave a comment here" aria-label="With textarea">
-                        </textarea>
+                        class="form-control" placeholder="Please explain here" aria-label="With textarea" 
+                        class="validate" required> </textarea>
                     </div>
                     <div class="col">
                         <button type="submit" class="btn btn-outline-success">submit</button>
@@ -79,21 +81,34 @@
         </div>
     </div>
 </div>
+<br>
 
 <!-- Child Details -->
     {% for child in children %}
-        <div class="card" style="width: 18rem;">
-            <img src="{{ url_for('static', filename='img/test.jpg') }}" class="card-img-top" alt="avatar1">
-            <div class="card-body">
-                <h5 class="card-title">{{ child.childfname }} {{ child.childlname }}</h5>
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <div class="row g-0">
+                        <img src="{{ url_for('static', filename='img/test.jpg') }}" class="img-fluid rounded-start" alt="avatar1">
+                    </div>
+                    <div class="row g-0">
+                        <h4 class="card-title">{{ child.childfname }} {{ child.childlname }}</h4>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card_title">Child's Informations</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Date of Birth: </strong>{{ child.date_of_birth }}</li>
+                            <li class="list-group-item"><strong>School Name: </strong>{{ child.school_name }}</li>
+                            <li class="list-group-item"><strong>School Year: </strong>{{ child.school_year }}</li>
+                            <li class="list-group-item"><strong>Medical Conditions: </strong>{{ child.child_med_conditions }}</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>Date of Birth: </strong>{{ child.date_of_birth }}</li>
-                <li class="list-group-item"><strong>School Name: </strong>{{ child.school_name }}</li>
-                <li class="list-group-item"><strong>School Year: </strong>{{ child.school_year }}</li>
-                <li class="list-group-item"><strong>Medical Conditions: </strong>{{ child.child_med_conditions }}</li>
-            </ul>
         </div>
+        <br>
     {% endfor %}
 
     
