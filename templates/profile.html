@@ -65,6 +65,17 @@
                             <option value="9">Year 9</option>
                         </select>
                     </div>
+                    
+                    <label for="Choises" class="form-label">Choose Your interstead Course/Sport: </label>
+                    {% for x in courses %}
+                        <div class="col-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="{{ x }}" value="">
+                                    <label class="form-check-label" for="{{ x }}">{{ x.course_name }}</label>
+                                </div>
+                        </div>
+                    {% endfor %}
+
                     <label for="child_med_conditions" class="form-label" >
                         Does your child suffer from any medical conditions/allergies that the club 
                         should be aware of? </label>
@@ -74,7 +85,7 @@
                         class="validate" required> </textarea>
                     </div>
                     <div class="col">
-                        <button type="submit" class="btn btn-outline-success">submit</button>
+                        <button type="submit" class="btn btn-outline-success">Submit</button>
                     </div>
                 </div>
             </form>
@@ -107,16 +118,17 @@
                     </div>
                 </div>
             </div>
+
             <!-- Edit Button /trigger modal/ -->
             <div class="row ">
                 <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
                     <a href="" class="btn btn-primary lighten-1 " role="button" data-bs-toggle="modal" 
                         data-bs-target="#staticBackdrop"> Edit Child</a>
-   
-                                 </div>
+                </div>
             </div>
         </div>
-            <br>
+
+        <br>
 
             <!-- Edit Form Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -166,6 +178,24 @@
                                             <option value="9">Year 9</option>
                                         </select>
                                     </div>
+                                    <label for="Choises" class="form-label">Choose Your interstead Course/Sport: </label>
+                                    <div class="col-6">
+                                        {% for course in courses %}
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                                <label class="form-check-label" for="inlineCheckbox">{{ course.course_name }}</label>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-6">
+                                        {% for sport in sports %}
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">{{ sport.sport_name }}</label>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+
                                     <label for="child_med_conditions" class="form-label" >
                                         Does your child suffer from any medical conditions/allergies that the club 
                                         should be aware of? </label>
@@ -185,7 +215,4 @@
         </div>
 
     {% endfor %}
-
-    
-
 {% endblock %}
