@@ -22,9 +22,11 @@
                                     <strong>Coach: </strong>{{ sport.Coach }}
                                 </li>
                             </ul>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-primary card-link">Enroll Now</a>
-                            </div>
+                            {% if not session.user %}
+                                <div class="card-body">
+                                    <a href="#" class="btn btn-primary card-link">Enroll Now</a>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
