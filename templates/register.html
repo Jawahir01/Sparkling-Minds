@@ -1,63 +1,117 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 
-{% block content %}
-
-    <div class="row">
-        <div class="col">
-            <h2>Sign Up</h2>
-            <p class="col"> Fill out all your information</p>
-            <p class="col"> have an account? <a href="{{ url_for('signin')}}">log in.</a></p>
-        </div>
+<div class="row">
+  <div class="col">
+    <h2>Sign Up</h2>
+    <p class="col">Fill out all your information</p>
+    <p class="col">
+      have an account? <a href="{{ url_for('signin')}}">log in.</a>
+    </p>
+  </div>
+</div>
+<form
+  class="row form-control justify-content-center"
+  method="POST"
+  action="{{ url_for('register') }}"
+>
+  <div class="row">
+    <div class="col-md-4">
+      <label for="username" class="form-label">User Name</label>
+      <input
+        id="username"
+        name="username"
+        type="text"
+        class="form-control validate"
+        placeholder="Choose a user name"
+        aria-label="username"
+        minlength="4"
+        maxlength="15"
+        pattern="^[a-zA-Z0-9]{4,15}$"
+        required
+      />
     </div>
-    <form class="row form-control justify-content-center" method="POST" action="{{ url_for('register') }}">
-        <div class="row">
-            <div class="col-md-4">
-                <label for="username" class="form-label">User Name</label>
-                <input id="username" name="username" type="text" class="form-control validate"
-                    placeholder="Choose a user name" aria-label="username" minlength="4" maxlength="15"
-                    pattern="^[a-zA-Z0-9]{4,15}$" required />
-            </div>
-            <div class="col-md-4">
-                <label for="first-name" class="form-label">First Name</label>
-                <input id="first-name" name="first-name" type="text" class="form-control validate" placeholder="First name"
-                    aria-label="First name" minlength="3" maxlength="15" pattern="^[a-zA-Z0-9]{3,15}$" required />
-            </div>
-            <div class="col-md-4">
-                <label for="last-name" class="form-label">Last Name</label>
-                <input id="last-name" name="last-name" type="text" class="form-control validate" placeholder="Last name"
-                    aria-label="Last name" minlength="3" maxlength="15" pattern="^[a-zA-Z0-9]{3,15}$" required />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <label for="email" class="form-label">Email</label>
-                <input id="email" name="email" type="email" class="form-control" required />
-            </div>
-            <div class="row align-items-center">
-                <div class="col-md-4">
-                    <label for="password" class="form-label">Password</label>
-                    <input id="password" name="password" type="password" class="form-control validate" minlength="8"
-                        maxlength="20" pattern="^[a-zA-Z0-9]{8,20}$" required />
-                </div>
-                <div class="col-auto">
-                    <span id="" class="form-text">
-                        Must be 8-20 characters long.
-                    </span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <label for="phone-number" class="form-label">phone number</label>
-                <input id="phone-number" name="phone-number" type="number" class="form-control validate"
-                    placeholder="phone number" pattern="^[0-9]{11}$" required />
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck" />
-                <label class="form-check-label" for="gridCheck">Agree to our Terms and Conditions </label>
-            </div>
-        </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Register</button>
-        </div>
-    </form>
+    <div class="col-md-4">
+      <label for="first-name" class="form-label">First Name</label>
+      <input
+        id="first-name"
+        name="first-name"
+        type="text"
+        class="form-control validate"
+        placeholder="First name"
+        aria-label="First name"
+        minlength="3"
+        maxlength="15"
+        pattern="^[a-zA-Z0-9]{3,15}$"
+        required
+      />
+    </div>
+    <div class="col-md-4">
+      <label for="last-name" class="form-label">Last Name</label>
+      <input
+        id="last-name"
+        name="last-name"
+        type="text"
+        class="form-control validate"
+        placeholder="Last name"
+        aria-label="Last name"
+        minlength="3"
+        maxlength="15"
+        pattern="^[a-zA-Z0-9]{3,15}$"
+        required
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <label for="email" class="form-label">Email</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <label for="password" class="form-label">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          class="form-control validate"
+          minlength="8"
+          maxlength="20"
+          pattern="^[a-zA-Z0-9]{8,20}$"
+          required
+        />
+      </div>
+      <div class="col-auto">
+        <span id="" class="form-text"> Must be 8-20 characters long. </span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="phone-number" class="form-label">phone number</label>
+      <input
+        id="phone-number"
+        name="phone-number"
+        type="number"
+        class="form-control validate"
+        placeholder="phone number"
+        pattern="^[0-9]{11}$"
+        required
+      />
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" />
+      <label class="form-check-label" for="gridCheck"
+        >Agree to our Terms and Conditions
+      </label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Register</button>
+  </div>
+</form>
 
 {% endblock%}
