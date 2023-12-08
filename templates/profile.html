@@ -1,218 +1,412 @@
-{% extends "base.html" %}
-{% block content %}
-
-    <div class="row">
-        <div class="card-body">
-            <div class="card-title">
-                <h3 class="center-align light-blue-text text-darken-4">
-                    {{ username }}'s Profile
-                </h3>
-            </div>
-        </div>
-    </div>
+{% extends "base.html" %} {% block content %}
 
 <div class="row">
-    <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
-
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" 
-        data-bs-target="#collapseExample" aria-expanded="false"
-         aria-controls="collapseExample"> Add Child<i class="fa fa-plus"></i>
-        </button>
+  <div class="card-body">
+    <div class="card-title">
+      <h3 class="center-align light-blue-text text-darken-4">
+        {{ username }}'s Profile
+      </h3>
     </div>
+  </div>
 </div>
-<br>
+
+<div class="row">
+  <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseExample"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      Add Child<i class="fa fa-plus"></i>
+    </button>
+  </div>
+</div>
+<br />
 
 <!-- Child Form -->
 <div class="row">
-    <div class="col">
-        <div class="collapse" id="collapseExample">
-            <form class="card card-body" method="POST" action="{{ url_for('add_child')}}">
-                <div class="row g-3">
-                    <label for="child_name" class="form-label">Child Name: </label>
-                    <div class="col-3">
-                        <input type="text" id="childfname" name="childfname" class="form-control validate"
-                            placeholder="First name" aria-label="First name" minlength="3" 
-                            maxlength="15" pattern="^[A-Za-z]{1,15}$" required>
-                    </div>
-                    <div class="col-3">
-                        <input type="text" id="childlname" name="childlname" class="form-control validate"
-                            placeholder="Last name" aria-label="Last name" minlength="3" 
-                            maxlength="15" pattern="^[A-Za-z]{1,15}$" required>
-                    </div>
-                    <label for="date_of_birth" class="form-label">Date of Birth: </label>
-                    <div class="col-auto">
-                        <input type="date" id="date_of_birth" name="date_of_birth" class="form-control"
-                            placeholder="DD/MM/YYYY" aria-label="date-of-birth" class="validate" required>
-                    </div>
-                    <label for="school_name" class="form-label">School Name: </label>
-                    <div class="col-6">
-                        <input type="text" id="school_name" name="school_name" class="form-control"
-                            placeholder="School Name" aria-label="School Name" class="validate" required>
-                    </div>
-                    <label for="school_year" class="form-label">School Year: </label>
-                    <div class="col-4">
-                        <select class="form-select" id="school_year" name="school_year"
-                            aria-label="Default select example" class="validate" required>
-                            <option selected>Choose your Child's Academic Year</option>
-                            <option value="1">Year 1</option>
-                            <option value="2">Year 2</option>
-                            <option value="3">Year 3</option>
-                            <option value="4">Year 4</option>
-                            <option value="5">Year 5</option>
-                            <option value="6">Year 6</option>
-                            <option value="7">Year 7</option>
-                            <option value="8">Year 8</option>
-                            <option value="9">Year 9</option>
-                        </select>
-                    </div>
-                    
-                    <label for="Choises" class="form-label">Choose Your interstead Course/Sport: </label>
-                    {% for x in courses %}
-                        <div class="col-2">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="{{ x }}" value="">
-                                    <label class="form-check-label" for="{{ x }}">{{ x.course_name }}</label>
-                                </div>
-                        </div>
-                    {% endfor %}
+  <div class="col">
+    <div class="collapse" id="collapseExample">
+      <form
+        class="card card-body"
+        method="POST"
+        action="{{ url_for('add_child')}}"
+      >
+        <div class="row g-3">
+          <label for="child_name" class="form-label">Child Name: </label>
+          <div class="col-3">
+            <input
+              type="text"
+              id="childfname"
+              name="childfname"
+              class="form-control validate"
+              placeholder="First name"
+              aria-label="First name"
+              minlength="3"
+              maxlength="15"
+              pattern="^[A-Za-z]{1,15}$"
+              required
+            />
+          </div>
+          <div class="col-3">
+            <input
+              type="text"
+              id="childlname"
+              name="childlname"
+              class="form-control validate"
+              placeholder="Last name"
+              aria-label="Last name"
+              minlength="3"
+              maxlength="15"
+              pattern="^[A-Za-z]{1,15}$"
+              required
+            />
+          </div>
+          <label for="date_of_birth" class="form-label">Date of Birth: </label>
+          <div class="col-auto">
+            <input
+              type="date"
+              id="date_of_birth"
+              name="date_of_birth"
+              class="form-control"
+              placeholder="DD/MM/YYYY"
+              aria-label="date-of-birth"
+              class="validate"
+              required
+            />
+          </div>
+          <label for="school_name" class="form-label">School Name: </label>
+          <div class="col-6">
+            <input
+              type="text"
+              id="school_name"
+              name="school_name"
+              class="form-control"
+              placeholder="School Name"
+              aria-label="School Name"
+              class="validate"
+              required
+            />
+          </div>
+          <label for="school_year" class="form-label">School Year: </label>
+          <div class="col-4">
+            <select
+              class="form-select"
+              id="school_year"
+              name="school_year"
+              aria-label="Default select example"
+              class="validate"
+              required
+            >
+              <option selected>Choose your Child's Academic Year</option>
+              <option value="1">Year 1</option>
+              <option value="2">Year 2</option>
+              <option value="3">Year 3</option>
+              <option value="4">Year 4</option>
+              <option value="5">Year 5</option>
+              <option value="6">Year 6</option>
+              <option value="7">Year 7</option>
+              <option value="8">Year 8</option>
+              <option value="9">Year 9</option>
+            </select>
+          </div>
 
-                    <label for="child_med_conditions" class="form-label" >
-                        Does your child suffer from any medical conditions/allergies that the club 
-                        should be aware of? </label>
-                    <div class="col">
-                        <textarea id="child_med_conditions" name="child_med_conditions" 
-                        class="form-control" placeholder="Please explain here" aria-label="With textarea" 
-                        class="validate" required> </textarea>
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-outline-success">Submit</button>
-                    </div>
-                </div>
-            </form>
+          <label for="child_choice" class="form-label"
+            >Choose Your interested Course/Sport:
+          </label>
+          <div class="col-3" id="child_choice">
+            {% for choice in child_choice %}
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                name="child_choice"
+                type="checkbox"
+                id="{{ choice }}"
+                value="{{ child_choice.course_name }}"
+              />
+              <label class="form-check-label" for="{{ choice }}"
+                >{{ choice.course_name }}</label
+              >
+            </div>
+            {% endfor %}
+          </div>
+
+          <div class="col-3" id="child_choice2">
+            {% for choice2 in child_choice2 %}
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                name="child_choice2"
+                type="checkbox"
+                id="{{ choice2 }}"
+                value="{{ child_choice2.sport_name }}"
+              />
+              <label class="form-check-label" for="{{ choice2 }}"
+                >{{ choice2.sport_name }}</label
+              >
+            </div>
+            {% endfor %}
+          </div>
+
+          <label for="child_med_conditions" class="form-label">
+            Does your child suffer from any medical conditions/allergies that
+            the club should be aware of?
+          </label>
+          <div class="col">
+            <textarea
+              id="child_med_conditions"
+              name="child_med_conditions"
+              class="form-control"
+              placeholder="Please explain here"
+              aria-label="With textarea"
+              class="validate"
+              required
+            >
+            </textarea>
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-outline-success">
+              Submit
+            </button>
+          </div>
         </div>
+      </form>
     </div>
+  </div>
 </div>
-<br>
+<br />
 
 <!-- Child Details -->
-    {% for child in children %}
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <div class="row g-0">
-                        <img src="{{ url_for('static', filename='img/test.jpg') }}" class="img-fluid rounded-start" alt="avatar1">
-                    </div>
-                    <div class="row g-0">
-                        <h4 class="card-title">{{ child.childfname }} {{ child.childlname }}</h4>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card_title">Child's Informations</h5>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Date of Birth: </strong>{{ child.date_of_birth }}</li>
-                            <li class="list-group-item"><strong>School Name: </strong>{{ child.school_name }}</li>
-                            <li class="list-group-item"><strong>School Year: </strong>{{ child.school_year }}</li>
-                            <li class="list-group-item"><strong>Medical Conditions: </strong>{{ child.child_med_conditions }}</li>
-                        </ul>
-                    </div>
-                </div>
+{% for child in children %}
+<div class="card mb-3" style="max-width: 540px">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <div class="row g-0">
+        <img
+          src="{{ url_for('static', filename='img/test.jpg') }}"
+          class="img-fluid rounded-start"
+          alt="avatar1"
+        />
+      </div>
+      <div class="row g-0">
+        <h4 class="card-title">
+          {{ child.childfname }} {{ child.childlname }}
+        </h4>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card_title">Child's Informations</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>Date of Birth: </strong>{{ child.date_of_birth }}
+          </li>
+          <li class="list-group-item">
+            <strong>School Name: </strong>{{ child.school_name }}
+          </li>
+          <li class="list-group-item">
+            <strong>School Year: </strong>{{ child.school_year }}
+          </li>
+          <li class="list-group-item">
+            <strong>Medical Conditions: </strong>{{ child.child_med_conditions
+            }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Button /trigger modal/ -->
+  <div class="row">
+    <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+      <a
+        href=""
+        class="btn btn-primary lighten-1"
+        role="button"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+      >
+        Edit Child</a
+      >
+    </div>
+  </div>
+</div>
+
+<br />
+
+<!-- Edit Form Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          Edit Child Details
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="" action="">
+          <div class="row g-3">
+            <label for="child_name" class="form-label">Child Name: </label>
+            <div class="col-3">
+              <input
+                type="text"
+                id="childfname"
+                name="childfname"
+                class="form-control validate"
+                placeholder="First name"
+                aria-label="First name"
+                minlength="3"
+                maxlength="15"
+                pattern="^[A-Za-z]{1,15}$"
+                required
+              />
+            </div>
+            <div class="col-3">
+              <input
+                type="text"
+                id="childlname"
+                name="childlname"
+                class="form-control validate"
+                placeholder="Last name"
+                aria-label="Last name"
+                minlength="3"
+                maxlength="15"
+                pattern="^[A-Za-z]{1,15}$"
+                required
+              />
+            </div>
+            <label for="date_of_birth" class="form-label"
+              >Date of Birth:
+            </label>
+            <div class="col-auto">
+              <input
+                type="date"
+                id="date_of_birth"
+                name="date_of_birth"
+                class="form-control"
+                placeholder="DD/MM/YYYY"
+                aria-label="date-of-birth"
+                class="validate"
+                required
+              />
+            </div>
+            <label for="school_name" class="form-label">School Name: </label>
+            <div class="col-6">
+              <input
+                type="text"
+                id="school_name"
+                name="school_name"
+                class="form-control"
+                placeholder="School Name"
+                aria-label="School Name"
+                class="validate"
+                required
+              />
+            </div>
+            <label for="school_year" class="form-label">School Year: </label>
+            <div class="col-4">
+              <select
+                class="form-select"
+                id="school_year"
+                name="school_year"
+                aria-label="Default select example"
+                class="validate"
+                required
+              >
+                <option selected>Choose your Child's Academic Year</option>
+                <option value="1">Year 1</option>
+                <option value="2">Year 2</option>
+                <option value="3">Year 3</option>
+                <option value="4">Year 4</option>
+                <option value="5">Year 5</option>
+                <option value="6">Year 6</option>
+                <option value="7">Year 7</option>
+                <option value="8">Year 8</option>
+                <option value="9">Year 9</option>
+              </select>
             </div>
 
-            <!-- Edit Button /trigger modal/ -->
-            <div class="row ">
-                <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a href="" class="btn btn-primary lighten-1 " role="button" data-bs-toggle="modal" 
-                        data-bs-target="#staticBackdrop"> Edit Child</a>
-                </div>
+            <label for="child_choice" class="form-label"
+              >Choose Your interested Course/Sport:
+            </label>
+            <div class="col-3" id="child_choice">
+              {% for choice in child_choice %}
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  name="child_choice"
+                  type="checkbox"
+                  id="{{ choice }}"
+                  value="{{ child_choice.course_name }}"
+                />
+                <label class="form-check-label" for="{{ choice }}"
+                  >{{ choice.course_name }}</label
+                >
+              </div>
+              {% endfor %}
             </div>
-        </div>
 
-        <br>
-
-            <!-- Edit Form Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Child Details</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="" action="">
-                                <div class="row g-3">
-                                    <label for="child_name" class="form-label">Child Name: </label>
-                                    <div class="col-3">
-                                        <input type="text" id="childfname" name="childfname" class="form-control validate"
-                                            placeholder="First name" aria-label="First name" minlength="3" 
-                                            maxlength="15" pattern="^[A-Za-z]{1,15}$" required>
-                                    </div>
-                                    <div class="col-3">
-                                        <input type="text" id="childlname" name="childlname" class="form-control validate"
-                                            placeholder="Last name" aria-label="Last name" minlength="3" 
-                                            maxlength="15" pattern="^[A-Za-z]{1,15}$" required>
-                                    </div>
-                                    <label for="date_of_birth" class="form-label">Date of Birth: </label>
-                                    <div class="col-auto">
-                                        <input type="date" id="date_of_birth" name="date_of_birth" class="form-control"
-                                            placeholder="DD/MM/YYYY" aria-label="date-of-birth" class="validate" required>
-                                    </div>
-                                    <label for="school_name" class="form-label">School Name: </label>
-                                    <div class="col-6">
-                                        <input type="text" id="school_name" name="school_name" class="form-control"
-                                            placeholder="School Name" aria-label="School Name" class="validate" required>
-                                    </div>
-                                    <label for="school_year" class="form-label">School Year: </label>
-                                    <div class="col-4">
-                                        <select class="form-select" id="school_year" name="school_year"
-                                            aria-label="Default select example" class="validate" required>
-                                            <option selected>Choose your Child's Academic Year</option>
-                                            <option value="1">Year 1</option>
-                                            <option value="2">Year 2</option>
-                                            <option value="3">Year 3</option>
-                                            <option value="4">Year 4</option>
-                                            <option value="5">Year 5</option>
-                                            <option value="6">Year 6</option>
-                                            <option value="7">Year 7</option>
-                                            <option value="8">Year 8</option>
-                                            <option value="9">Year 9</option>
-                                        </select>
-                                    </div>
-                                    <label for="Choises" class="form-label">Choose Your interstead Course/Sport: </label>
-                                    <div class="col-6">
-                                        {% for course in courses %}
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                <label class="form-check-label" for="inlineCheckbox">{{ course.course_name }}</label>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                    <div class="col-6">
-                                        {% for sport in sports %}
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">{{ sport.sport_name }}</label>
-                                        </div>
-                                        {% endfor %}
-                                    </div>
-
-                                    <label for="child_med_conditions" class="form-label" >
-                                        Does your child suffer from any medical conditions/allergies that the club 
-                                        should be aware of? </label>
-                                    <div class="col">
-                                        <textarea id="child_med_conditions" name="child_med_conditions" 
-                                        class="form-control" placeholder="Please explain here" aria-label="With textarea" 
-                                        class="validate" required> </textarea>
-                                    </div>
-                                </div>
-                        </form>
-                    </div><div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save Changes</button>
-                    </div>
-                </div>
+            <div class="col-3" id="child_choice2">
+              {% for choice2 in child_choice2 %}
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  name="child_choice2"
+                  type="checkbox"
+                  id="{{ choice2 }}"
+                  value="{{ child_choice2.sport_name }}"
+                />
+                <label class="form-check-label" for="{{ choice2 }}"
+                  >{{ choice2.sport_name }}</label
+                >
+              </div>
+              {% endfor %}
             </div>
-        </div>
 
-    {% endfor %}
-{% endblock %}
+            <label for="child_med_conditions" class="form-label">
+              Does your child suffer from any medical conditions/allergies that
+              the club should be aware of?
+            </label>
+            <div class="col">
+              <textarea
+                id="child_med_conditions"
+                name="child_med_conditions"
+                class="form-control"
+                placeholder="Please explain here"
+                aria-label="With textarea"
+                class="validate"
+                required
+              >
+              </textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %} {% endblock %}

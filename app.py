@@ -58,7 +58,7 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("You have been Successful! Registered")
         return redirect(url_for("profile", username=session["user"]))
-   
+
     return render_template("register.html")
 
 
@@ -75,7 +75,7 @@ def signin():
 
             # ensure hashed password matches user input
             if check_password_hash(
-            existing_user["password"], request.form.get("password")):
+                    existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
@@ -98,9 +98,15 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
+    child_choice = list(mongo.db.courses.find())
+
+    child_choice2 = list(mongo.db.sports.find())
+
     if session["user"]:
         children = list(mongo.db.kids.find({'username': username}))
-        return render_template("profile.html", username=username, children= children)
+        return render_template("profile.html", username=username,
+                               children=children, child_choice=child_choice,
+                               child_choice2=child_choice2)
 
 
 @app.route("/add_child", methods=["GET", "POST"])
@@ -118,6 +124,7 @@ def add_child():
             "date_of_birth": request.form.get("date_of_birth"),
             "school_name": request.form.get("school_name"),
             "school_year": request.form.get("school_year"),
+            "child_choice": list(request.form.get(child_choice)),
             "child_med_conditions": request.form.get("child_med_conditions")
         }
         mongo.db.kids.insert_one(child)
@@ -140,4 +147,4 @@ if __name__ == "__main__":
         host=os.environ.get("IP"),
         port=int(os.environ.get("PORT")),
         debug=True
-        )
+    )
