@@ -124,7 +124,7 @@ def add_child():
             "date_of_birth": request.form.get("date_of_birth"),
             "school_name": request.form.get("school_name"),
             "school_year": request.form.get("school_year"),
-            "child_choice": list(request.form.get(child_choice)),
+            "child_choice": list(request.form.get("child_choice")),
             "child_med_conditions": request.form.get("child_med_conditions")
         }
         mongo.db.kids.insert_one(child)
