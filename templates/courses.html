@@ -1,35 +1,44 @@
-{% extends "base.html" %} 
-{% block content %}
-    
-        <h2>Our Courses:</h2>
-        <div class="container">
-            <div class="row">
-                {% for course in courses %}
-                    <div class="col">
-                        <div class="card border-primary mb-4" style="max-width: 20rem;">
-                            <img src="{{ url_for('static', filename='img/test.jpg') }}" class="card-img-top" alt="test picture">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ course.course_name }}</h5>
-                                <p>{{ course.course_description }}</p>
-                                <p class="card-text">Some quick example text to build on the card title and 
-                                    make up the bulk of the card's content.</p>
-                                            
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <strong> Sat - Sun: </strong>{{ course.course_time }}</li>
-                                    <li class="list-group-item">
-                                        <strong>Course Date: </strong>{{ course.course_start }}</li>
-                                </ul>
-                            {% if not session.user %}
-                                <div class="card-body">
-                                    <a href="#" class="btn btn-primary card-link">Enroll Now</a>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+{% extends "base.html" %} {% block content %}
+
+<h2>Our Courses:</h2>
+<div class="container">
+  <div class="row">
+    {% for course in courses %}
+    <div class="col">
+      <div class="card border-primary mb-4" style="max-width: 20rem">
+        <img
+          src="{{ url_for('static', filename='img/test.jpg') }}"
+          class="card-img-top"
+          alt="test picture"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ course.course_name }}</h5>
+          <p>{{ course.course_description }}</p>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong> Sat - Sun: </strong>{{ course.course_time }}
+            </li>
+            <li class="list-group-item">
+              <strong>Course Date: </strong>{{ course.course_start }}
+            </li>
+          </ul>
+          {% if not session.user %}
+          <div class="card-body">
+            <a href="{{ url_for('register')}}" class="btn btn-primary card-link"
+              >Enroll Now</a
+            >
+          </div>
+          {% endif %}
         </div>
+      </div>
     </div>
-    
+    {% endfor %}
+  </div>
+</div>
+
 {% endblock %}
