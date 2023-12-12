@@ -1,0 +1,41 @@
+
+
+.atf_header_top {
+    background-color: orange;
+    padding: 5px 0;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease 0s;
+}
+
+.atf_header_top {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.atf_header_top i {
+    padding-right: 5px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.fas, .fa-solid {
+    font-weight: 900;
+}
+
+.atf_header_top_left p {
+    padding-right: 12px;
+    display: inline-block
+}
+
+.atf_header-social {
+    list-style-type: none;
+    text-align: right;
+}
+.atf_header-social li {
+    display: inline-block;
+    margin: 0 2px;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
