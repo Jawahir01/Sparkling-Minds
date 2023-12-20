@@ -1,18 +1,14 @@
 
-
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700');
 .atf_header_top {
-    background-color: orange;
-    padding: 5px 0;
+    background-color: #d72234;
+    padding: 0px 0;
     color: rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease 0s;
 }
 
-.atf_header_top {
-    color: rgba(255, 255, 255, 0.8);
-}
-
 .atf_header_top i {
-    padding-right: 5px;
+    padding-right: 10px;
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -23,6 +19,12 @@
 .atf_header_top_left p {
     padding-right: 12px;
     display: inline-block
+}
+
+.atf_header_top_left a {
+    text-decoration: none;
+    color: currentColor;
+    font-family: cursive;
 }
 
 .atf_header-social {
@@ -38,4 +40,43 @@ ul, li {
     padding: 0;
     margin: 0;
     list-style: none;
+}
+/*--------------------------------------------------------------
+  # Header
+  --------------------------------------------------------------*/
+.navbar {
+  top: 4px;
+}
+
+.nav-item {
+  padding: 15px;
+}
+
+.nav-link {
+  border: none;
+  color: black;
+  padding: 13px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 2px 2px;
+  border-radius: 12px;
+  font-family: Exo, sans-serif;
+}
+
+.nav-link:hover {
+  background-color: lightblue;
+  color: white;
+  padding: 14px;
+  margin: 2px 2px;
+}
+
+.logo {
+    height: 200px;
+    width: 204px;
+    margin: 1px;
+    position: absolute;
+    margin-top: 40px;
 }
